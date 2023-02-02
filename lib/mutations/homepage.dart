@@ -7,7 +7,12 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 import '../Configuration/conf.dart';
 
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   String query = """query lookupCustomerOrder {
   customer {
     first_name
@@ -25,22 +30,19 @@ class HomePage extends StatelessWidget {
           ),
           floatingActionButton: SpeedDial(child: Icon(Icons.add),
               speedDialChildren: [
-                SpeedDialChild(child: Icon(Icons.insert_chart),label: 'Add Data', onPressed: (){Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const AddData()),
-                );}),
-                SpeedDialChild(child: Icon(Icons.update),label: 'Update Data', onPressed: (){Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const UpdateData()),
-                );}),
-                SpeedDialChild(child: Icon(Icons.delete), label: 'Delete Data',onPressed: (){Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const DeletingData()),
-                );}),
-                SpeedDialChild(child: Icon(Icons.refresh),label: 'Refresh Screen', onPressed: (){Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => HomePage()),
-                );})
+                SpeedDialChild(child: const Icon(Icons.insert_chart),label: 'Add Data', onPressed: (){
+                  Navigator.pushNamed(context, '/AddData');
+                }),
+                SpeedDialChild(child: const Icon(Icons.update),label: 'Update Data', onPressed: (){
+                  Navigator.pushNamed(context, '/UpdateData');
+                }),
+                SpeedDialChild(child: const Icon(Icons.delete), label: 'Delete Data',onPressed: (){
+                  Navigator.pushNamed(context, '/DeleteData');
+
+                }),
+                SpeedDialChild(child: const Icon(Icons.refresh),label: 'Refresh Screen', onPressed: (){
+                  Navigator.popAndPushNamed(context, '/');
+                })
               ]
           ),
 
