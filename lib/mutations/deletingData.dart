@@ -3,7 +3,6 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 import '../Configuration/conf.dart';
 import 'homepage.dart';
 
-
 class DeletingData extends StatefulWidget {
   const DeletingData({Key? key}) : super(key: key);
 
@@ -60,11 +59,10 @@ class _DeletingDataState extends State<DeletingData> {
                             runMutationDelete({
                               'first_name': nameController.text,
                             });
-                            setState(() {
-                              Navigator.pop(context);
-                            });
-
-                            // Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => HomePage()));
+                            Navigator.of(context).pushAndRemoveUntil(
+                                MaterialPageRoute(
+                                    builder: (context) => HomePage()),
+                                (route) => false);
                           },
                           child: Text('Delete')),
                       // const SizedBox(

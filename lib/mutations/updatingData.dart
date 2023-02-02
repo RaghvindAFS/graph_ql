@@ -57,10 +57,10 @@ class _UpdateDataState extends State<UpdateData> {
                         height: 10,
                       ),
                       TextField(
-                        decoration: InputDecoration(label: Text('Update Email')),
+                        decoration:
+                            InputDecoration(label: Text('Update Email')),
                         controller: emailController,
                         keyboardType: TextInputType.emailAddress,
-
                       ),
                       const SizedBox(
                         height: 10,
@@ -68,13 +68,14 @@ class _UpdateDataState extends State<UpdateData> {
                       ElevatedButton(
                           onPressed: () {
                             runMutationUpdate({
-
                               'first_name': nameController.text,
                               'email': emailController.text,
-
                             });
 
-                            Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => HomePage()));
+                            Navigator.of(context).pushAndRemoveUntil(
+                                MaterialPageRoute(
+                                    builder: (context) => HomePage()),
+                                (route) => false);
                           },
                           child: Text('Update')),
                       // const SizedBox(

@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:graph_ql/mutations/addingData.dart';
-import 'package:graph_ql/mutations/deletingData.dart';
-import 'package:graph_ql/mutations/updatingData.dart';
 import 'package:simple_speed_dial/simple_speed_dial.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import '../Configuration/conf.dart';
@@ -28,7 +25,7 @@ class _HomePageState extends State<HomePage> {
           appBar: AppBar(
             title: Text("GraphlQL Client"),
           ),
-          floatingActionButton: SpeedDial(child: Icon(Icons.add),
+          floatingActionButton: SpeedDial(child: Icon(Icons.widgets),
               speedDialChildren: [
                 SpeedDialChild(child: const Icon(Icons.insert_chart),label: 'Add Data', onPressed: (){
                   Navigator.pushNamed(context, '/AddData');
@@ -38,11 +35,12 @@ class _HomePageState extends State<HomePage> {
                 }),
                 SpeedDialChild(child: const Icon(Icons.delete), label: 'Delete Data',onPressed: (){
                   Navigator.pushNamed(context, '/DeleteData');
+                }),
+                SpeedDialChild(child: const Icon(Icons.refresh), label: 'Refresh',onPressed: (){
+                  Navigator.popAndPushNamed(context, '/');
 
                 }),
-                SpeedDialChild(child: const Icon(Icons.refresh),label: 'Refresh Screen', onPressed: (){
-                  Navigator.popAndPushNamed(context, '/');
-                })
+
               ]
           ),
 
