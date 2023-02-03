@@ -8,6 +8,6 @@ final HttpLink httpLink = HttpLink(defaultHeaders: {
 final ValueNotifier<GraphQLClient> client = ValueNotifier<GraphQLClient>(
   GraphQLClient(
     link: httpLink,
-    cache: GraphQLCache(store: HiveStore()),
+    cache: GraphQLCache(store: InMemoryStore()),
   ),
 );

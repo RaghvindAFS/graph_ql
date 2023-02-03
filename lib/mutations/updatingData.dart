@@ -72,10 +72,12 @@ class _UpdateDataState extends State<UpdateData> {
                               'email': emailController.text,
                             });
 
-                            Navigator.of(context).pushAndRemoveUntil(
-                                MaterialPageRoute(
-                                    builder: (context) => HomePage()),
-                                (route) => false);
+                            // Navigator.of(context).pushAndRemoveUntil(
+                            //     MaterialPageRoute(
+                            //         builder: (context) => HomePage()),
+                            //     (route) => false);
+                            Navigator.popAndPushNamed(context, '/');
+
                           },
                           child: Text('Update')),
                       // const SizedBox(

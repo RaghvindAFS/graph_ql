@@ -47,6 +47,7 @@ class _AddDataState extends State<AddData> {
                 },
                 onCompleted: (dynamic resultData) {
                   print('result Data $resultData');
+                  // Navigator.popAndPushNamed(context, '/');
                 },
               ),
               builder: (runMutation, result) {
@@ -91,6 +92,7 @@ class _AddDataState extends State<AddData> {
                             // Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(
                             //     builder: (context) => HomePage()), (route) => false);
                             Navigator.popAndPushNamed(context, '/');
+                            // Navigator.pop(context);
                           },
                           child: Text('Insert')),
 

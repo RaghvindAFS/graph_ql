@@ -15,9 +15,17 @@ class _HomePageState extends State<HomePage> {
     email
   }
 }""";
+  bool value = false;
+
+  void refresh() {
+    setState(() {
+      value = !value;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
+    print('rebuilding');
     return GraphQLProvider(
       client: client,
       child: Scaffold(
@@ -31,18 +39,24 @@ class _HomePageState extends State<HomePage> {
                 label: 'Add Data',
                 onPressed: () {
                   Navigator.pushNamed(context, '/AddData');
+
+                  setState(() {});
                 }),
             SpeedDialChild(
                 child: const Icon(Icons.update),
                 label: 'Update Data',
-                onPressed: () {
-                  Navigator.pushNamed(context, '/UpdateData');
+                onPressed: () async {
+                  Navigator.pushNamed(context, '/UpdateData')
+                      .then((_) => setState(() {}));
+                  setState(() {});
                 }),
             SpeedDialChild(
                 child: const Icon(Icons.delete),
                 label: 'Delete Data',
-                onPressed: () {
-                  Navigator.pushNamed(context, '/DeleteData');
+                onPressed: () async {
+                  Navigator.pushNamed(context, '/DeleteData')
+                      .then((_) => setState(() {}));
+                  setState(() {});
                 }),
             // SpeedDialChild(
             //     child: const Icon(Icons.refresh),
