@@ -66,8 +66,8 @@ class _UpdateDataState extends State<UpdateData> {
                         height: 10,
                       ),
                       ElevatedButton(
-                          onPressed: () {
-                            runMutationUpdate({
+                          onPressed: () async{
+                            await runMutationUpdate({
                               'first_name': nameController.text,
                               'email': emailController.text,
                             });

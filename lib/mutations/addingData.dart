@@ -78,8 +78,8 @@ class _AddDataState extends State<AddData> {
                         height: 10,
                       ),
                       ElevatedButton(
-                          onPressed: () {
-                            runMutation({
+                          onPressed: () async{
+                           await runMutation({
                               'id': int.parse(idController.text),
                               'first_name': nameController.text,
                               'email': emailController.text,

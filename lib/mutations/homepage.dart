@@ -25,6 +25,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    print('building');
     return GraphQLProvider(
         client: client,
         child: Scaffold(
@@ -65,49 +66,87 @@ class _HomePageState extends State<HomePage> {
                       changeData();
                     }
                   }),
-              // SpeedDialChild(
-              //     child: const Icon(Icons.refresh),
-              //     label: 'Refresh',
-              //     onPressed: () async {
-              //       Navigator.popAndPushNamed(context, '/');
-              //     }),
+              SpeedDialChild(
+                  child: const Icon(Icons.refresh),
+                  label: 'Refresh',
+                  onPressed: () async {
+                    Navigator.popAndPushNamed(context, '/');
+                  }),
             ]),
-            body: Query(
-              options: QueryOptions(
-                document:
-                    gql(query), // this is the query string you just created
-              ),
-              // Just like in apollo refetch() could be used to manually trigger a refetch
-              // while fetchMore() can be used for pagination purpose
-              builder: (QueryResult result,
-                  {VoidCallback? refetch, FetchMore? fetchMore}) {
-                // print('result ${result.data}');
-                if (result.hasException) {
-                  print('hasException');
-                  return Text(result.exception.toString());
-                }
+            body: value
+                ? Query(
+                    options: QueryOptions(
+                      document: gql(
+                          query), // this is the query string you just created
+                    ),
+                    // Just like in apollo refetch() could be used to manually trigger a refetch
+                    // while fetchMore() can be used for pagination purpose
+                    builder: (QueryResult result,
+                        {VoidCallback? refetch, FetchMore? fetchMore}) {
+                      // print('result ${result.data}');
+                      if (result.hasException) {
+                        print('hasException');
+                        return Text(result.exception.toString());
+                      }
 
-                if (result.isLoading) {
-                  return const Text('Loading');
-                }
+                      if (result.isLoading) {
+                        return const Text('Loading');
+                      }
 
-                List? repositories = result.data?['customer'];
-                // print('rep $repositories');
+                      List? repositories = result.data?['customer'];
+                      // print('rep $repositories');
 
-                if (repositories == null) {
-                  return const Text('No repositories');
-                }
+                      if (repositories == null) {
+                        return const Text('No repositories');
+                      }
 
-                return ListView.builder(
-                  itemCount: repositories.length,
-                  itemBuilder: (context, index) {
-                    return ListTile(
-                      title: Text(repositories[index]['first_name']),
-                      subtitle: Text(repositories[index]['email']),
-                    );
-                  },
-                );
-              },
-            )));
+                      return ListView.builder(
+                        itemCount: repositories.length,
+                        itemBuilder: (context, index) {
+                          return ListTile(
+                            title: Text(repositories[index]['first_name']),
+                            subtitle: Text(repositories[index]['email']),
+                          );
+                        },
+                      );
+                    },
+                  )
+                : Query(
+                    options: QueryOptions(
+                      document: gql(
+                          query), // this is the query string you just created
+                    ),
+                    // Just like in apollo refetch() could be used to manually trigger a refetch
+                    // while fetchMore() can be used for pagination purpose
+                    builder: (QueryResult result,
+                        {VoidCallback? refetch, FetchMore? fetchMore}) {
+                      // print('result ${result.data}');
+                      if (result.hasException) {
+                        print('hasException');
+                        return Text(result.exception.toString());
+                      }
+
+                      if (result.isLoading) {
+                        return const Text('Loading');
+                      }
+
+                      List? repositories = result.data?['customer'];
+                      // print('rep $repositories');
+
+                      if (repositories == null) {
+                        return const Text('No repositories');
+                      }
+
+                      return ListView.builder(
+                        itemCount: repositories.length,
+                        itemBuilder: (context, index) {
+                          return ListTile(
+                            title: Text(repositories[index]['first_name']),
+                            subtitle: Text(repositories[index]['email']),
+                          );
+                        },
+                      );
+                    },
+                  )));
   }
 }

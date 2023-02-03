@@ -55,8 +55,8 @@ class _DeletingDataState extends State<DeletingData> {
                       ),
 
                       ElevatedButton(
-                          onPressed: () {
-                            runMutationDelete({
+                          onPressed: () async{
+                            await runMutationDelete({
                               'first_name': nameController.text,
                             });
                             Navigator.of(context).pop('refresh');
