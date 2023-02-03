@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
+
 final HttpLink httpLink = HttpLink(defaultHeaders: {
   'content-type': 'application/json',
   'x-hasura-admin-secret':
@@ -8,6 +9,6 @@ final HttpLink httpLink = HttpLink(defaultHeaders: {
 final ValueNotifier<GraphQLClient> client = ValueNotifier<GraphQLClient>(
   GraphQLClient(
     link: httpLink,
-    cache: GraphQLCache(store: HiveStore()),
+    cache: GraphQLCache(store: InMemoryStore()),
   ),
 );

@@ -59,10 +59,11 @@ class _DeletingDataState extends State<DeletingData> {
                             runMutationDelete({
                               'first_name': nameController.text,
                             });
-                            Navigator.of(context).pushAndRemoveUntil(
-                                MaterialPageRoute(
-                                    builder: (context) => HomePage()),
-                                (route) => false);
+                            Navigator.of(context).pop('refresh');
+                            // Navigator.of(context).pushAndRemoveUntil(
+                            //     MaterialPageRoute(
+                            //         builder: (context) => HomePage()),
+                            //     (route) => false).then((_) => setState(() {}));
                           },
                           child: Text('Delete')),
                       // const SizedBox(
