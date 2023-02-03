@@ -88,11 +88,11 @@ class _AddDataState extends State<AddData> {
                               'username': null,
                               'ip_address': null
                             });
-                            Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(
-                                builder: (context) => HomePage()), (route) => false);
+                            // Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(
+                            //     builder: (context) => HomePage()), (route) => false);
+                            Navigator.popAndPushNamed(context, '/');
                           },
                           child: Text('Insert')),
-
 
                       // const SizedBox(
                       //   height: 10,

@@ -3,7 +3,6 @@ import 'package:simple_speed_dial/simple_speed_dial.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import '../Configuration/conf.dart';
 
-
 class HomePage extends StatefulWidget {
   @override
   State<HomePage> createState() => _HomePageState();
@@ -25,26 +24,33 @@ class _HomePageState extends State<HomePage> {
           appBar: AppBar(
             title: Text("GraphlQL Client"),
           ),
-          floatingActionButton: SpeedDial(child: Icon(Icons.widgets),
-              speedDialChildren: [
-                SpeedDialChild(child: const Icon(Icons.insert_chart),label: 'Add Data', onPressed: (){
+          floatingActionButton:
+              SpeedDial(child: Icon(Icons.widgets), speedDialChildren: [
+            SpeedDialChild(
+                child: const Icon(Icons.insert_chart),
+                label: 'Add Data',
+                onPressed: () {
                   Navigator.pushNamed(context, '/AddData');
                 }),
-                SpeedDialChild(child: const Icon(Icons.update),label: 'Update Data', onPressed: (){
+            SpeedDialChild(
+                child: const Icon(Icons.update),
+                label: 'Update Data',
+                onPressed: () {
                   Navigator.pushNamed(context, '/UpdateData');
                 }),
-                SpeedDialChild(child: const Icon(Icons.delete), label: 'Delete Data',onPressed: (){
+            SpeedDialChild(
+                child: const Icon(Icons.delete),
+                label: 'Delete Data',
+                onPressed: () {
                   Navigator.pushNamed(context, '/DeleteData');
                 }),
-                SpeedDialChild(child: const Icon(Icons.refresh), label: 'Refresh',onPressed: (){
-                  Navigator.popAndPushNamed(context, '/');
-
-                }),
-
-              ]
-          ),
-
-
+            // SpeedDialChild(
+            //     child: const Icon(Icons.refresh),
+            //     label: 'Refresh',
+            //     onPressed: () {
+            //       Navigator.popAndPushNamed(context, '/');
+            //     }),
+          ]),
           body: Query(
             options: QueryOptions(
               document: gql(query), // this is the query string you just created
