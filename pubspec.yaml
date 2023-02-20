@@ -32,6 +32,7 @@ dependencies:
   flutter:
     sdk: flutter
   graphql_flutter: ^5.1.2
+  simple_speed_dial: ^0.1.7
 
 
   # The following adds the Cupertino Icons font to your application.
