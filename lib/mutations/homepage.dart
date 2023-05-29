@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:simple_speed_dial/simple_speed_dial.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import '../Configuration/conf.dart';
+import 'package:flutter_html/flutter_html.dart';
+import 'dart:js' as js;
+
 
 class HomePage extends StatefulWidget {
   @override
@@ -58,12 +61,12 @@ class _HomePageState extends State<HomePage> {
                       .then((_) => setState(() {}));
                   setState(() {});
                 }),
-            // SpeedDialChild(
-            //     child: const Icon(Icons.refresh),
-            //     label: 'Refresh',
-            //     onPressed: () {
-            //       Navigator.popAndPushNamed(context, '/');
-            //     }),
+            SpeedDialChild(
+                child: const Icon(Icons.refresh),
+                label: 'Refresh',
+                onPressed: () {
+                  js.context.callMethod("alert", ["This is alert message"]);
+                }),
           ]),
           body: Query(
             options: QueryOptions(
